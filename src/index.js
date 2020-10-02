@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import Card from './Card';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
 import './index.css';
-//import CardList from './CardList';
 import * as serviceWorker from './serviceWorker';
+import {searchRobots} from './reducers';
 import 'tachyons';
-//import { robots } from './robots';
 import App from './containers/App';
 
-ReactDOM.render(
+const store = createStore(searchRobots);
+
+ReactDOM.render (
+	<Provider store={store}>
       <App />
-  ,document.getElementById('root')
+      </Provider>,
+  document.getElementById('root')
 );
 serviceWorker.unregister();
 
